@@ -9,7 +9,7 @@ class AppBar extends HTMLElement {
     this._style = document.createElement("style");
   }
 
-  updateStyle() {
+  _updateStyle() {
     this._style.textContent = `
       :host {
         display: block;
@@ -28,7 +28,7 @@ class AppBar extends HTMLElement {
     `;
   }
 
-  emptyContent() {
+  _emptyContent() {
     this._shadowRoot.innerHTML = "";
   }
 
@@ -37,13 +37,13 @@ class AppBar extends HTMLElement {
   }
 
   render() {
-    this.updateStyle();
-    this.emptyContent();
+    this._updateStyle();
+    this._emptyContent();
 
     this._shadowRoot.appendChild(this._style);
     this._shadowRoot.innerHTML += `
     <div>
-      <h1 class="brand-name">Sport Club Finder>/h1>
+      <h1 class="brand-name">Sport Club Finder</h1>
     </div>
     `;
   }
