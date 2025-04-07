@@ -10,7 +10,6 @@ class SearchBar extends HTMLElement {
 
     this._shadowRoot = this.attachShadow({ mode: "open" });
     this._style = document.createElement("style");
-
     this.render();
   }
 
@@ -22,6 +21,7 @@ class SearchBar extends HTMLElement {
     this._shadowRoot
       .querySelector("form")
       .addEventListener("submit", (event) => this._onFormSubmit(event, this));
+
     this.addEventListener(this._submitEvent, this._onSearchBarSubmit);
   }
 
@@ -42,9 +42,7 @@ class SearchBar extends HTMLElement {
 
   _onSearchBarSubmit() {
     const query = this._shadowRoot.querySelector("input#name").value;
-
     if (!query) return;
-
     this.dispatchEvent(
       new CustomEvent(this._searchEvent, {
         detail: { query },
@@ -156,7 +154,7 @@ class SearchBar extends HTMLElement {
 
     this._shadowRoot.appendChild(this._style);
     this._shadowRoot.innerHTML += `
-      <div class="floating-form">
+    <div class="floating-form">
         <form id="searchForm" class="search-form">
           <div class="form-group">
             <input id="name" name="name" type="search" required />
